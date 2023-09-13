@@ -1,0 +1,139 @@
+<odoo>
+    <data>
+        <!-- Vista de formulario para registrar clientes -->
+        <record model="ir.ui.view" id="cliente_registro_form_view">
+            <field name="name">registro.clientes.form</field>
+            <field name="model">registro.clientes.web</field>
+            <!-- <field name="icon" src= 'odoo15-compulab_registro_clientes_moduloweb/static/src/img/1024.png'/> -->
+            <field name="arch" type="xml">
+                <form>
+                
+                  <sheet>
+                  <!-- boton para verificar estado -->
+
+                  <!-- nuevo boton para enviar a contactos -->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="verify_state" type="object" string="Verificar Estado" icon="fa-refresh"/>
+                            <button name="toggle_state" type="object" string="Enviar a Contactos" icon="fa-users"/>
+                        </div>
+                        <widget name="web_ribbon" text="Nuevo" bg_color="bg-primary" tooltip="" attrs="{'invisible':[('clab_state','!=','0_clab_nuevo')]}"/>
+                        <widget name="web_ribbon" text="Enviado a Contactos" bg_color="bg-primary" tooltip="" attrs="{'invisible':[('clab_state','!=','1_clab_enviado')]}"/>
+                        <widget name="web_ribbon" text="Editado" bg_color="bg-primary" tooltip="" attrs="{'invisible':[('clab_state','!=','2_clab_editado')]}"/>
+                  <!-- nuevo boton para enviar a contactos -->
+                        <!-- <div>
+                            <img src="/odoo15-compulab_registro_clientes_moduloweb/static/src/img/logo.png" width="279" height="79" alt="Logo de la compañía" />
+                        </div> -->
+                    <group>
+                        <div>
+                            <h2>Registro de Compañía</h2>
+                        </div>
+                        <!-- <h3>Indique su información a continuación para que podamos estar en contacto.</h3> -->
+                    </group>
+                    <!-- codigo de compañía -->
+                    <group>
+                        <group>
+                            <field name="clab_business_name" placeholder="Nombre de la Empresa"/>
+                            <field name="clab_business_reason" placeholder="Por ejemplo: Compulab.S.A."/>
+                            <field name="clab_RUC" placeholder="Número de Identificación Tributaria"/>
+                            <field name="clab_DV" placeholder="Dígito de Verificación de la empresa"/>
+                            <field name="clab_company_type" invisible="1"/>
+                            <field name="clab_state" invisible="1"/>
+                            <field name="sent_to_partner" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="clab_phone" placeholder="Teléfono de la empresa"/>
+                            <field name="clab_mobile" placeholder="Móvil de la empresa"/>
+                            <field name="clab_email" placeholder="Correo de la empresa"/>
+                            <field name="clab_website" placeholder="Sitio web de la empresa"/>
+                            <field name="clab_direction" placeholder="... Calle, Ciudad, Distrito, Provincia, Pais"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <div>
+                            <h2>Contacto Principal</h2>
+                        </div>
+                    </group>
+
+                    <group >
+                        <!-- codigo de contacto principal -->
+                        <group >
+                            <field name="clab_contact_name" placeholder="Nombre de Contacto Principal"/>
+                            <field name="clab_contact_function" placeholder="Puesto de Trabajo del Contacto Principal"/>
+                            <field name="clab_contact_email" placeholder="Correo de Contacto Principal"/>
+                        </group>
+                        <group >
+                            <field name="clab_contact_phone" placeholder="Teléfono de Contacto Principal"/>
+                            <field name="clab_contact_mobile" placeholder="Móvil de Contacto Principal"/>                            
+                        </group>
+                    </group>
+                    <group>
+                        <div>
+                            <h2>Contacto Cobros</h2>
+                        </div>
+                    </group>
+                    <group >
+                       <!-- codigo de contacto Cobros -->
+                        <group >
+                            <field name="clab_billing_name" placeholder="Nombre de Contacto de Cobros"/>
+                            <field name="clab_billing_function" placeholder="Puesto de Trabajo del Contacto de Cobros"/>
+                            <field name="clab_billing_email" placeholder="Correo de Contacto de Cobros"/>
+                        </group>
+                        <group >
+                            <field name="clab_billing_phone" placeholder="Teléfono de Contacto de Cobros"/>
+                            <field name="clab_billing_mobile" placeholder="Móvil de Contacto de Cobros"/>                           
+                        </group>
+                    </group>                                   
+                    <footer>
+                        <!-- <button name="action_send_to_contacts" string="Enviar a Contactos" type="object" class="btn-primary"/> -->
+                    </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista tree para mostrar los registros -->
+        <record id="view_tree" model="ir.ui.view">
+            <field name="name">vista.registro.clientes.tree</field>
+            <field name="model">registro.clientes.web</field>
+            <field name="arch" type="xml">
+                <tree create="false">
+                    <field name="clab_business_name"/>
+                    <field name="clab_business_reason"/>
+                    <field name="clab_email"/>
+                    <field name="clab_website"/>
+                    <field name="clab_RUC"/>
+                    <field name="clab_DV"/>
+                    <field name="clab_phone" optional="show"/>
+                    <field name="clab_mobile" optional="show"/>
+                    <field name="clab_direction" optional="show"/>
+                    <field name="clab_state" widget="label_selection"/>
+
+                    <!-- contacto Principal -->
+                    <field name="clab_contact_name" optional="show"/>              
+                    <field name="clab_contact_email" optional="show"/>
+                    <field name="clab_contact_phone" optional="show"/>
+                    <field name="clab_contact_mobile" optional="show"/>
+                    <field name="clab_contact_function" optional="show"/>
+                    <!-- contacto cobros -->
+                    <field name="clab_billing_name" optional="show"/>                 
+                    <field name="clab_billing_email" optional="show"/>
+                    <field name="clab_billing_phone" optional="show"/>
+                    <field name="clab_billing_mobile" optional="show"/>
+                    <field name="clab_billing_function" optional="show"/>                    
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_cliente_registro_form">
+            <field name="name">Clientes Registrados</field>
+            <field name="res_model">registro.clientes.web</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem id="menu_cliente_registro" web_icon="odoo15-compulab_registro_clientes_moduloweb,static/description/icon.png" name="Registro Clientes Web" sequence="0"/>
+        <menuitem id="menu_cliente_registro_1" name="Registro Clientes Web" sequence="1" parent='menu_cliente_registro' action='action_cliente_registro_form'/> 
+        <!-- <menuitem id="menu_cliente_registro_tree" name="Crear Cliente" parent="menu_cliente_registro" action="action_cliente_registro_form"/> -->
+    </data>
+</odoo>

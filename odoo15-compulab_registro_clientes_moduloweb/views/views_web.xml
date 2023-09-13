@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data >
+
+       <record id="menu_form" model="website.menu">
+
+
+           <field name="name">Registro de Clientes</field>
+           <field name="url">/registrar_cliente_web</field>
+           <field name="parent_id" ref="website.registro-cliente"/>
+           <field name="sequence">0</field>
+       </record>
+
+        <record id="success_menu" model="website.menu">
+            <field name="name">Registro Exitoso</field>
+            <field name="url">/registration_success</field>
+            <field name="parent_id" ref="website.registro-cliente"/>
+            <field name="sequence">1</field>
+        </record>
+
+   </data>
+   
+</odoo>

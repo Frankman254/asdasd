@@ -1,0 +1,141 @@
+/* custom_styles.css */
+/* Estilos para el formulario de creación de clientes */
+
+/* Cambiar el color de fondo del formulario */
+
+html, body{
+    margin: auto;
+    background-color: rgb(19, 50, 190);
+    color: white;
+  }
+.form_creacion_clientes {
+    text-align: left;
+    background-color: rgb(54, 67, 213);
+    color: white;
+    padding: 20px;
+    font-size: 25px;
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #0b34bc;
+    border-radius: 5px;
+}
+
+/* Estilo para el botón de enviar */
+
+input[type="reset"] {
+    /*display: block;   Convertir el botón en un bloque para poder centrarlo */
+    margin: center;  /* Margen automático a la izquierda y derecha para centrar */
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para las etiquetas de los campos */
+label {
+    font-weight: bold;
+    display: block;
+}
+
+/* Estilo para las clases "form-group" y "row" */
+.form-group {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+/* ... tus estilos actuales ... */
+
+#suggestions {
+    position: absolute;
+    width: 80%;
+    max-height: 200px;  /* Reduzco la altura máxima para que el dropdown sea más pequeño */
+    overflow-y: scroll;
+    background-color: #333;
+    border: 1px solid #0b34bc;
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 14px;  /* Reduzco el tamaño de fuente del dropdown */
+}
+
+.suggestion-item {
+    padding: 8px;  /* Reduzco el padding para que los ítems sean más pequeños */
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 1px solid #555;
+}
+
+.suggestion-item:hover {
+    background-color: #555;
+}
+
+.custom-checkbox-label {
+    display: flex; /* Utilizamos flexbox para alinear el checkbox y el texto en una misma línea */
+    align-items: center; /* Centrar verticalmente el contenido */
+    font-size: 80%;
+}
+
+.custom-checkbox {
+    margin-right: 10px; /* Agrega espacio entre el checkbox y el texto */
+    transform: scale(1.5); /* Ajusta el tamaño del checkbox */
+}
+
+/* Agregar línea divisora */
+/* .divider {
+    border-top: 5px solid #222483;
+    margin: 20px 0;
+} */
+
+/* Estilo para el título centrado y con borde */
+.form-title, h2 {
+    width: 100%;
+    padding: 10px;
+    margin: center;
+    
+    border: 5px solid #0b34bc;
+    border-radius: 10px;
+}
+
+
+/* estilos para el estado del contacto */
+
+/*display: block;   Convertir el botón en un bloque para poder centrarlo */
+#mySubmitButton {
+    background-color: transparent; /* Fondo transparente */
+
+    background-image: url('/odoo15-compulab_registro_clientes_moduloweb/static/description/registrer.png'); /* Ruta de la imagen */
+    
+    border-radius: 5px; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    padding: 0; /* Sin relleno */
+    margin: 0; /* Sin margen */
+    display: inline-block; /* Para que el botón ocupe solo el espacio necesario */
+
+}
+
+
+#mySubmitButton::before {
+    content: "";
+    display: inline-block;
+    width: 200px; /* Ancho de la imagen de fondo */
+    height: 50px; /* Alto de la imagen de fondo */
+    background-image: url('/odoo15-compulab_registro_clientes_moduloweb/static/description/registrer.png'); /* Ruta de la imagen */
+    background-size: 300px 150px; /* Tamaño de la imagen de fondo */
+    background-repeat: no-repeat; /* No repetir la imagen de fondo */
+    background-position: center center; /* Centrar la imagen de fondo */
+    margin-right: 10px; /* Espacio a la derecha de la imagen */
+    vertical-align: middle; /* Alinea verticalmente la imagen con el texto */
+}

@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+        <template id="registration_success_template" name="Registration Success">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h2>¡Registro Exitoso!</h2>
+                    <p>El formulario ha sido registrado correctamente.</p>
+                    <a href="/registrar_cliente_web" class="btn btn-primary">Enviar otro formulario</a>
+                </div>
+            </t>
+        </template>
+        <template id="registration_failure_template" name="Registration Failure">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h2>Error en el Registro</h2>
+                    <p>Algo ha salido mal en el sistema.</p>
+                    <a href="/registrar_cliente" class="btn btn-primary">Intentar nuevamente</a>
+                </div>
+            </t>
+        </template>
+        <template id="confirmation_template" name="RUC Confirmation">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h2>El numero RUC introducido ya existe en el sistema</h2>
+                    <p>Desea actualizar los datos?</p>
+                    <form action="/confirmed" method="post" id="update_form">
+                        <!-- obtener los valores del post  -->
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="update_partner" t-att-value="update_partner"/>
+                        <input type="hidden" name="clab_business_name" t-att-value="post_data.get('clab_business_name')"/>
+                        <input type="hidden" name="clab_business_reason" t-att-value="post_data.get('clab_business_reason')"/>
+                        <input type="hidden" name="clab_email" t-att-value="post_data.get('clab_email')"/>
+                        <input type="hidden" name="clab_website" t-att-value="post_data.get('clab_website')"/>
+                        <input type="hidden" name="clab_DV" t-att-value="post_data.get('clab_DV')"/>
+                        <input type="hidden" name="clab_RUC" t-att-value="post_data.get('clab_RUC')"/>
+                        <!-- valores nuevos -->
+                        <input type="hidden" name="clab_phone" t-att-value="post_data.get('clab_phone')"/>
+                        <input type="hidden" name="clab_mobile" t-att-value="post_data.get('clab_mobile')"/>
+                        <input type="hidden" name="clab_direction" t-att-value="post_data.get('clab_direction')"/>
+                        <!-- contacto principal -->
+                        <input type="hidden" name="clab_contact_name" t-att-value="post_data.get('clab_contact_name')"/>
+                        <input type="hidden" name="clab_contact_function" t-att-value="post_data.get('clab_contact_function')"/>
+                        <input type="hidden" name="clab_contact_email" t-att-value="post_data.get('clab_contact_email')"/>
+                        <input type="hidden" name="clab_contact_phone" t-att-value="post_data.get('clab_contact_phone')"/>
+                        <input type="hidden" name="clab_contact_mobile" t-att-value="post_data.get('clab_contact_mobile')"/>
+                        <!-- contacto Cobros -->
+                        <input type="hidden" name="clab_billing_name" t-att-value="post_data.get('clab_billing_name')"/>
+                        <input type="hidden" name="clab_billing_function" t-att-value="post_data.get('clab_billing_function')"/>
+                        <input type="hidden" name="clab_billing_email" t-att-value="post_data.get('clab_billing_email')"/>
+                        <input type="hidden" name="clab_billing_phone" t-att-value="post_data.get('clab_billing_phone')"/>
+                        <input type="hidden" name="clab_billing_mobile" t-att-value="post_data.get('clab_billing_mobile')"/>                        
+                        <!-- valores nuevos -->
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Confirmar"/>
+                            <a href="/registrar_cliente_web" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
